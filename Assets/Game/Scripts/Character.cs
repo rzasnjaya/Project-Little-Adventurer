@@ -10,11 +10,13 @@ public class Character : MonoBehaviour
     private PlayerInput _playerInput;
     private float _verticalVelocity;
     public float Gravity = -9.8f;
+    private Animator _animator;
 
     private void Awake()
     {
         _cc = GetComponent<CharacterController>();
         _playerInput = GetComponent<PlayerInput>();
+        _animator = GetComponent<Animator>();   
     }
 
     private void CalculatePlayerMovement()
@@ -22,12 +24,17 @@ public class Character : MonoBehaviour
         _movementVelocity.Set(_playerInput.HorizontalInput, 0f, _playerInput.VerticalInput);
         _movementVelocity.Normalize();
         _movementVelocity = Quaternion.Euler(0,-45f,0) * _movementVelocity;
+
+        _animator.SetFloat("Speed", _movementVelocity.magnitude);
+
         _movementVelocity *= MoveSpeed * Time.deltaTime;
 
         if(_movementVelocity != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(_movementVelocity);
         }
+
+        _animator.SetBool("AirBorne", !_cc.isGrounded);
     }
 
     private void FixedUpdate()
