@@ -8,7 +8,7 @@ public class EnemyVFXManager : MonoBehaviour
     public VisualEffect FootStep;
     public VisualEffect AttackVFX;
 
-    public void PlayAttcakVFX()
+    public void PlayAttackVFX()
     {
         AttackVFX.SendEvent("OnPlay");
     }

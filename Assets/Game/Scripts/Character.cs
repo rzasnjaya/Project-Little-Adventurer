@@ -17,6 +17,12 @@ public class Character : MonoBehaviour
     private UnityEngine.AI.NavMeshAgent _navMeshAgent;
     private Transform TargetPlayer;
 
+    //Health
+    private Health _health;
+
+    //Damage Caster
+    private DamageCaster _damageCaster;
+
     //Player Slides
     private float attackStartTime;
     public float AttackSlideDuration = 0.4f;
@@ -33,7 +39,9 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         _cc = GetComponent<CharacterController>();
-        _animator = GetComponent<Animator>();   
+        _animator = GetComponent<Animator>();
+        _health = GetComponent<Health>();
+        _damageCaster = GetComponentInChildren<DamageCaster>();
 
         if(!IsPlayer)
         {
@@ -183,5 +191,23 @@ public class Character : MonoBehaviour
     public void AttackAnimationEnds()
     {
         SwitchStateTo(CharacterState.Normal);
+    }
+
+    public void ApplyDamage(int damage, Vector3 attackerPos = new Vector3())
+    {
+        if(_health!=null)
+        {
+            _health.ApplyDamage(damage);
+        }
+    }
+
+    public void EnableDamageCaster()
+    {
+        _damageCaster.EnableDamagaCaster();
+    }
+
+    public void DisableDamageCaster()
+    {
+        _damageCaster.DisableDamageCaster();
     }
 }
