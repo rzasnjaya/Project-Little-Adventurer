@@ -1633,6 +1633,7 @@ MonoBehaviour:
   AttackSlideDuration: 0.1
   AttackSlideSpeed: 1.5
   CurrentState: 0
+  itemToDrop: {fileID: 0}
 --- !u!114 &1503835539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3253,6 +3254,7 @@ MonoBehaviour:
   AttackSlideDuration: 0.4
   AttackSlideSpeed: 0.06
   CurrentState: 0
+  itemToDrop: {fileID: 6622396352218485284, guid: 7860f813824391e44ac5dd750593d459, type: 3}
 --- !u!114 &2109912619
 MonoBehaviour:
   m_ObjectHideFlags: 0
