@@ -258,6 +258,81 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1001 &197683896
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1921356750}
+    m_Modifications:
+    - target: {fileID: 6050473045160503341, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050473045160503341, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050473045160503341, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050473045160503341, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050473045160503341, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050473045160503341, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050473045160503341, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050473045160503341, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050473045160503341, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050473045160503341, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050473045160503342, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_Name
+      value: VFX Heal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050473045160503347, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_InitialEventName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050473045160503347, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+      propertyPath: m_InitialEventNameOverriden
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+--- !u!4 &197683897 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6050473045160503341, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+  m_PrefabInstance: {fileID: 197683896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &197683898 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 6050473045160503347, guid: 59e037f841b401b41beacdaa9802504d, type: 3}
+  m_PrefabInstance: {fileID: 197683896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &199977797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1709,9 +1784,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   Gravity: -20
+  Coin: 0
   IsPlayer: 1
   AttackSlideDuration: 0.1
   AttackSlideSpeed: 1.5
+  IsInvincible: 0
+  invincibleDuration: 0
   CurrentState: 0
   itemToDrop: {fileID: 0}
 --- !u!114 &1503835539
@@ -1791,6 +1869,7 @@ MonoBehaviour:
   footStep: {fileID: 1226169762}
   Blade01: {fileID: 466535231}
   Slash: {fileID: 171799894}
+  Heal: {fileID: 197683898}
 --- !u!114 &1503835543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3103,6 +3182,7 @@ Transform:
   - {fileID: 1226169761}
   - {fileID: 466535230}
   - {fileID: 171799893}
+  - {fileID: 197683897}
   m_Father: {fileID: 1252648815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1971744965 stripped
@@ -3360,9 +3440,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 2
   Gravity: -9.8
+  Coin: 0
   IsPlayer: 0
   AttackSlideDuration: 0.4
   AttackSlideSpeed: 0.06
+  IsInvincible: 0
+  invincibleDuration: 0
   CurrentState: 0
   itemToDrop: {fileID: 6622396352218485284, guid: 7860f813824391e44ac5dd750593d459, type: 3}
 --- !u!114 &2109912619
