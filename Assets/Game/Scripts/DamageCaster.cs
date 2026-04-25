@@ -24,7 +24,23 @@ public class DamageCaster : MonoBehaviour
 
             if(targetCC != null )
             {
-                targetCC.ApplyDamage(Damage);
+                targetCC.ApplyDamage(Damage, transform.parent.position);
+
+                PlayerVFXManager playerVFXManager = transform.parent.GetComponent<PlayerVFXManager>();
+
+                if(playerVFXManager != null)
+                {
+                    RaycastHit hit;
+
+                    Vector3 originalPos = transform.position + (-_damageCasterCollider.bounds.extents.z) * transform.forward;
+
+                    bool isHit = Physics.BoxCast(originalPos, _damageCasterCollider.bounds.extents / 2, transform.forward, out hit, transform.rotation, _damageCasterCollider.bounds.extents.z, 1 << 6);
+
+                    if(isHit )
+                    {
+                        playerVFXManager.PlaySlash(hit.point + new Vector3(0, 0.5f, 0));
+                    }
+                }
             }
 
             _damageTargetList.Add(other);
